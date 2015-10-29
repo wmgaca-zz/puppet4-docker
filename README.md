@@ -15,8 +15,8 @@ docker build -t puppet .
 
 ```bash
 docker run -e "AWS_REGION=eu-central-1" \
-           -v "$HOME/.aws:/root/.aws" \
-           -v "$(pwd):/src" \
+           -v "$HOME/.aws:/root/.aws" \   # Mount AWS credentials
+           -v "$(pwd):/src" \             # Mount the code from current work dir
            puppet \
-           puppet apply /src/init.pp
+           puppet apply /src/init.pp      # Code from your CWD will be mounted in /src
 ```
